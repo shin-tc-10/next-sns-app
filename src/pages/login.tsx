@@ -51,7 +51,7 @@ const Login = () => {
                 type="email" 
                 autoComplete="email"
                 required
-                onChange={(e: React.ChangeEvent<HTMLInputElement> => setEmail(e.target.value))}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value))}
                 />
             </div>
             <div>
