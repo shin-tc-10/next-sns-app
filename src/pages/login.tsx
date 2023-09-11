@@ -1,36 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import Head from "next/head";
 import { useAuth } from "@/context/auth";
-import apiClient from '@/lib/apiClient';
+import apiClient from "@/lib/apiClient";
+import { useRouter } from "next/router";
 
 const Login = () => {
-    const [email, setEmail] = useState<string>("");
-    const [password, setPassword] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
-    const router = useRouter();
+  const router = useRouter();
 
-    const { login } = useAuth();
+  const { login } = useAuth();
 
-    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-        try {
-            const response = await apiClient.post("/auth/login", {
-                email,
-                password,
-            });
+    try {
+      const response = await apiClient.post("/auth/login", {
+        email,
+        password,
+      });
 
-            const token = response.data.token;
+      const token = response.data.token;
 
-            login(token);
+      login(token);
 
-            router.push("/");
-
-        } catch (err) {
-            alert("入力内容が正しくありません。");
-        }
-    };
-
+      router.push("/");
+    } catch (err) {
+      alert("入力内容が正しくありません。");
+    }
+  };
 
   return (
     <div>
@@ -45,25 +44,29 @@ const Login = () => {
           <form onSubmit={handleSubmit}>
             <div>
               <label>メールアドレス</label>
-              <input 
+              <input
                 id="email"
                 name="email"
-                type="email" 
+                type="email"
                 autoComplete="email"
                 required
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value))}
-                />
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setEmail(e.target.value)
+                }
+              />
             </div>
             <div>
               <label>パスワード</label>
-              <input 
+              <input
                 id="password"
                 name="password"
                 type="password"
                 autoComplete="current-password"
                 required
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
-                />
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  setPassword(e.target.value)
+                }
+              />
             </div>
             <div>
               <button type="submit">ログイン</button>
