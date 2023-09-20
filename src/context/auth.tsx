@@ -1,6 +1,7 @@
 import adpiClient from "@lib/apiClient";
 import React, { ReactNode, useContext, useEffect, useState } from "react";
 
+// ユーザが認証されていなければnull。認証されていればユーザ情報が含まれる
 interface AuthContextType {
   user: null | {
     id: number;
