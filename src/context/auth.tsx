@@ -8,6 +8,9 @@ interface AuthContextType {
     username: string;
     email: string;
   };
+
+  login: (token: string) => void;
+  logout: () => void;
 }
 
 interface AuthProviderProps {
@@ -30,4 +33,47 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     email: string;
     username: string;
   }>(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem("auth_token");
+    if (token) {
+      apiClient.defaults.headers["Authorization"] = `Bearer ${token}`;
+
+      apiClient
+        .get("/users/find")
+        .then((res) => {
+          setUser(res.data.user);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }, []);
+
+  const login = async (token: string) => {
+    localStorage.setItem("auth_token", token);
+    apiClient.defaults.headers["Authorization"] = `Bearer ${token}`;
+    alert("test");
+    try {
+      apiClient.get("/users/find").then((res) => {
+        setUser(res.data.user);
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const logout = () => {
+    localStorage.removeItem("auth_token");
+    delete apiClient.defaults.headers["Authorication"];
+    setUser(null);
+  };
+
+  const value = {
+    user,
+    login,
+    logout,
+  };
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

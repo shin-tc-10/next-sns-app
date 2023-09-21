@@ -22,7 +22,6 @@ const Login = () => {
       });
 
       const token = response.data.token;
-
       login(token);
 
       router.push("/");
