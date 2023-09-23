@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useAuth } from "@/context/auth";
 
 const HeaderMenu = () => {
-  const { user, logout } = useAuth();
+  const { user, logout,  } = useAuth();
 
   return (
     <header>
@@ -17,6 +17,7 @@ const HeaderMenu = () => {
               <>
                 <li>プロフィール</li>
                 <button onClick={logout}>ログアウト</button>
+                <Link href="/withdrawal">退会</Link>
               </>
             ) : (
               <>
