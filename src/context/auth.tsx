@@ -1,4 +1,4 @@
-import adpiClient from "@lib/apiClient";
+import apiClient from "@/lib/apiClient";
 import React, { ReactNode, useContext, useEffect, useState } from "react";
 
 // ユーザが認証されていなければnull。認証されていればユーザ情報が含まれる
@@ -39,21 +39,15 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     if (token) {
       apiClient.defaults.headers["Authorization"] = `Bearer ${token}`;
 
-      apiClient
-        .get("/users/find")
-        .then((res) => {
-          setUser(res.data.user);
-        })
-        .catch((err) => {
+      apiClient.get("/users/find").then((res) => { setUser(res.data.user); }).catch((err) => {
           console.log(err);
-        });
+      });
     }
   }, []);
 
   const login = async (token: string) => {
     localStorage.setItem("auth_token", token);
     apiClient.defaults.headers["Authorization"] = `Bearer ${token}`;
-    alert("test");
     try {
       apiClient.get("/users/find").then((res) => {
         setUser(res.data.user);

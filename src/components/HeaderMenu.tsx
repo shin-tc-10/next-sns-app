@@ -4,7 +4,6 @@ import { useAuth } from "@/context/auth";
 
 const HeaderMenu = () => {
   const { user, logout } = useAuth();
-  console.log(user);
 
   return (
     <header>
@@ -17,7 +16,7 @@ const HeaderMenu = () => {
             {user ? (
               <>
                 <li>プロフィール</li>
-                <li>ログアウト</li>
+                <button onClick={logout}>ログアウト</button>
               </>
             ) : (
               <>

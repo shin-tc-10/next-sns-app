@@ -1,12 +1,15 @@
 import React from "react";
 import HeaderMenu from "@/components/HeaderMenu";
+import { AuthProvider } from "@/context/auth";
 
 const App = ({ Component, pageProps }) => {
   return (
-    <div>
-      <HeaderMenu />
-      <Component {...pageProps} />
-    </div>
+    <AuthProvider>
+      <div>
+        <HeaderMenu />
+        <Component {...pageProps} />
+      </div>
+    </AuthProvider>
   );
 };
 
