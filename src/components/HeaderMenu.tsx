@@ -21,7 +21,7 @@ const HeaderMenu = () => {
             ) : (
               <>
                 <Link href="/login">ログイン</Link>
-                <li>サインアップ</li>
+                <Link href="/signup">サインアップ</Link>
               </>
             )}
           </ul>
