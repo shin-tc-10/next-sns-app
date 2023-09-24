@@ -27,7 +27,6 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
             notFound: true,
         };
     };
-
 }
 
 const UserProfile = ({ profile, posts }: Props) => {
