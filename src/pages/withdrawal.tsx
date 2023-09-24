@@ -13,7 +13,7 @@ const Withdrawal = () => {
 
         e.preventDefault();
 
-        // 新規登録APIと通信
+        // 退会APIと通信
         try {
             await apiClient.post("/auth/delete", {
                 user
@@ -31,7 +31,7 @@ const Withdrawal = () => {
                 <title>退会</title>
             </Head>
             <div>
-                <h2>アカウントを削除</h2>
+                <h2>退会</h2>
             </div>
             <div>
                 <div>
