@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import apiClient from "@/lib/apiClient";
 import Head from 'next/head';
 
-const withdrawal = () => {
+const Withdrawal = () => {
     const { user, logout } = useAuth();
 
     const router = useRouter();
@@ -45,4 +45,4 @@ const withdrawal = () => {
     )
 }
 
-export default withdrawal;
+export default Withdrawal;
