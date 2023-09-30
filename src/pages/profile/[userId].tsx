@@ -1,7 +1,7 @@
 import apiClient from '@/lib/apiClient';
 import { PostType, Profile } from '@/types';
 import { GetServerSideProps } from 'next';
-import React from 'react';
+import React, { useEffect, useState } from "react";
 
 type Props = {
     profile: Profile;
@@ -30,33 +30,68 @@ export const getServerSideProps: GetServerSideProps = async (context: any) => {
 }
 
 const UserProfile = ({ profile, posts }: Props) => {
+    const [latestPosts, setLatestPosts] = useState<any[]>([]);
+
+    const onDelete = async (e: number) => {
+        // 投稿削除APIエンドポイントを呼び出し
+
+        try {
+            const newPost = await apiClient.post("/posts/postDelete", {
+                postId: e,
+            });
+
+            console.log(newPost);
+
+            alert("投稿を削除しました。");
+            // 削除後の最新の投稿を再取得して表示する
+            const response = await apiClient.get("/posts/get_latest_post");
+            setLatestPosts(response.data);
+        } catch (err) {
+            alert("ログインしてください。");
+        }
+
+    }
+
+    useEffect(() => {
+        const fetchLatestPosts = async () => {
+            try {
+                const response = await apiClient.get("/posts/get_latest_post");
+                setLatestPosts(response.data);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        fetchLatestPosts();
+    }, []);
+
     return (
         <div>
             <div>
                 <div>
                     <div>
-                        <img src={profile.profileImageUrl}/>
+                        <img src={profile.profileImageUrl} />
                         <div>
                             <h2>{profile.user.username}</h2>
                             <p>{profile.bio}</p>
                         </div>
                     </div>
                 </div>
-                {posts.map((post: PostType) => (
+                {latestPosts.map((post: PostType) => (
                     <div key={post.id}>
                         <div>
                             <div>
                                 <img src={profile.profileImageUrl} />
-                                    <div>
-                                        <h2>
-                                            {post.author.username}
-                                        </h2>
-                                        <p>
-                                            {new Date(post.createdAt).toLocaleString()}
-                                        </p>
-                                    </div>
-                                    <p>{post.content}</p>
-                            </div>  
+                                <button onClick={() => onDelete(post.id)}>削除</button>
+                                <div>
+                                    <h2>
+                                        {post.author.username}
+                                    </h2>
+                                    <p>
+                                        {new Date(post.createdAt).toLocaleString()}
+                                    </p>
+                                </div>
+                                <p>{post.content}</p>
+                            </div>
                         </div>
                     </div>
                 ))}
