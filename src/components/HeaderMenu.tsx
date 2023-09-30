@@ -9,7 +9,7 @@ const HeaderMenu = () => {
   return (
     <header>
       <div>
-        <h1><a href="/">Next SNS App</a></h1>
+        <h1><Link href="/">Next SNS App</Link></h1>
         <nav aria-controls="basic-navbar-nav">
           <ul className="me-auto">
             {user ? (
