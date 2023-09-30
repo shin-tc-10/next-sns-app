@@ -81,6 +81,7 @@ const UserProfile = ({ profile, posts }: Props) => {
                         <div>
                             <div>
                                 <img src={profile.profileImageUrl} />
+
                                 <button onClick={() => onDelete(post.id)}>削除</button>
                                 <div>
                                     <h2>

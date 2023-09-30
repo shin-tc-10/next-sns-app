@@ -2,7 +2,6 @@ import React from "react";
 import HeaderMenu from "@/components/HeaderMenu";
 import { AuthProvider } from "@/context/auth";
 import type { AppProps } from 'next/app';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const App = ({ Component, pageProps }: AppProps) => {

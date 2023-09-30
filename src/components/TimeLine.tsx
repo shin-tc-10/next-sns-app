@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import apiClient from "@/lib/apiClient";
 import Post from './Post';
 import { PostType } from "../types";
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 
 const TimeLine = () => {
   const [postText, setPostText] = useState<string>("");
@@ -42,13 +40,12 @@ const TimeLine = () => {
       <main>
         <div>
           <form onSubmit={handleSubmit}>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-              {/* <Form.Label style={{textAlign: 'center'}}>新規投稿</Form.Label> */}
-              <Form.Control as="textarea" placeholder="何を呟く？" rows={3} onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+            <div>
+              <textarea placeholder="何を呟く？" onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
                 setPostText(e.target.value)} value={postText} style={{ width: '600px', margin: '70px auto 10px' }} />
               <div className="d-grid gap-2" style={{ width: '600px', margin: '0 auto 10px' }}>
-                <Button type="submit" variant="primary" size="lg">投稿する</Button></div>
-            </Form.Group>
+                <button type="submit" >投稿する</button></div>
+            </div>
           </form>
         </div>
         <div className="mb-2" style={{ textAlign: 'center' }}>
