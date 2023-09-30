@@ -7,7 +7,7 @@ interface AuthContextType {
     id: number;
     username: string;
     email: string;
-  };
+  }
 
   login: (token: string) => void;
   logout: () => void;
@@ -19,13 +19,13 @@ interface AuthProviderProps {
 
 const AuthContext = React.createContext<AuthContextType>({
   user: null,
-  login: () => {},
-  logout: () => {},
+  login: () => { },
+  logout: () => { },
 });
 
 export const useAuth = () => {
   return useContext(AuthContext);
-};
+}
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [user, setUser] = useState<null | {
@@ -40,14 +40,16 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
       apiClient.defaults.headers["Authorization"] = `Bearer ${token}`;
 
       apiClient.get("/users/find").then((res) => { setUser(res.data.user); }).catch((err) => {
-          console.log(err);
+        console.log(err);
       });
-    }
+    };
+
   }, []);
 
   const login = async (token: string) => {
     localStorage.setItem("auth_token", token);
     apiClient.defaults.headers["Authorization"] = `Bearer ${token}`;
+
     try {
       apiClient.get("/users/find").then((res) => {
         setUser(res.data.user);
@@ -69,5 +71,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     logout,
   };
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={value}>
+      {children}
+    </AuthContext.Provider>
+  )
 };
