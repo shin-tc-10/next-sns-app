@@ -37,7 +37,7 @@ const TimeLine = () => {
 
   return (
     <div className="h-screen flex flex-col justify-between">
-      <main className="w-48 m-auto overflow-auto">
+      <main className="m-auto overflow-auto">
         <div className="my-20">
           {latestPosts.map((post: PostType) => (
             <Post key={post.id} post={post} />
