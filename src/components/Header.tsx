@@ -16,7 +16,7 @@ const HeaderMenu = () => {
               <>
                 <Link href={`/profile/${user.id}`} className="pr-3">プロフィール</Link>
                 <button onClick={logout} className="pr-3">ログアウト</button>
-                <Link href="/withdrawal" className="pr-3">退会</Link>
+                {/* <Link href="/withdrawal" className="pr-3">退会</Link> */}
               </>) : (<>
                 <Link href="/login" className="pr-3">ログイン</Link>
                 <Link href="/signup" className="pr-3">サインアップ</Link>
