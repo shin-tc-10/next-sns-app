@@ -7,6 +7,14 @@ const TimeLine = () => {
   const [postText, setPostText] = useState<string>("");
   const [latestPosts, setLatestPosts] = useState<any[]>([]);
 
+  //　スムーズなスクロールを有効にする
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -16,6 +24,8 @@ const TimeLine = () => {
       });
 
       setLatestPosts((prevPosts) => [newPost.data, ...prevPosts]);
+      // ページトップに移動
+      scrollToTop();
       // テキストエリアを空にする
       setPostText("");
     } catch (err) {
@@ -36,7 +46,7 @@ const TimeLine = () => {
   }, []);
 
   return (
-    <div className="h-screen flex flex-col justify-between overflow-auto">
+    <div className="h-screen flex flex-col justify-between">
       <main className="m-auto">
         <div className="my-20">
           {latestPosts.map((post: PostType) => (
