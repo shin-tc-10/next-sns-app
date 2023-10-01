@@ -2,7 +2,7 @@ import React from "react";
 import HeaderMenu from "@/components/HeaderMenu";
 import { AuthProvider } from "@/context/auth";
 import type { AppProps } from 'next/app';
-import '@/styles/tailwind.css';
+import '@/styles/globals.css';
 
 
 const App = ({ Component, pageProps }: AppProps) => {

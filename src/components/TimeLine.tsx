@@ -37,21 +37,21 @@ const TimeLine = () => {
 
   return (
     <div>
-      <main>
-        <div>
+      <main className="w-48 m-auto">
+        <div className=" overflow-auto my-20">
+          {latestPosts.map((post: PostType) => (
+            <Post key={post.id} post={post} />
+          ))}
+        </div>
+        <div className="">
           <form onSubmit={handleSubmit}>
             <div>
-              <textarea placeholder="何を呟く？" onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+              <textarea className="shadow-xl" placeholder="何を呟く？" onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
                 setPostText(e.target.value)} value={postText} style={{ width: '600px', margin: '70px auto 10px' }} />
               <div className="d-grid gap-2" style={{ width: '600px', margin: '0 auto 10px' }}>
                 <button type="submit" >投稿する</button></div>
             </div>
           </form>
-        </div>
-        <div className="mb-2" style={{ textAlign: 'center' }}>
-          {latestPosts.map((post: PostType) => (
-            <Post key={post.id} post={post} />
-          ))}
         </div>
       </main>
     </div>
