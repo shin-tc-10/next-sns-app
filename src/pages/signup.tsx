@@ -27,7 +27,7 @@ const Signup = () => {
     };
 
     return (
-        <div>
+        <div className="my-20">
             <Head>
                 <title>新規作成</title>
             </Head>
@@ -39,15 +39,15 @@ const Signup = () => {
                     <form onSubmit={handleSubmit}>
                         <div>
                             <label>お名前</label>
-                            <input id="name" name="name" type="text" autoComplete="name" required className="" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}/>
+                            <input id="name" name="name" type="text" autoComplete="name" required className="" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)} />
                         </div>
                         <div>
                             <label>メールアドレス</label>
-                            <input id="email" name="email" type="text" autoComplete="email" required className="" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}/>
+                            <input id="email" name="email" type="text" autoComplete="email" required className="" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)} />
                         </div>
                         <div>
                             <label>パスワード</label>
-                            <input id="password" name="password" type="text" autoComplete="new-password" required className="" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}/>
+                            <input id="password" name="password" type="text" autoComplete="new-password" required className="" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)} />
                         </div>
                         <div>
                             <button type="submit">新規登録</button>

@@ -7,24 +7,24 @@ type Props = {
 }
 
 const Post = (props: Props) => {
-  const { post } = props;
+    const { post } = props;
 
-  return (
-    <div>
-        <div>
+    return (
+        <div className="my-10">
             <div>
-                <Link href={`/profile/${post.authorId}`} >
-                    <img src={post.author.profile?.profileImageUrl} alt="User Avatar" />
-                </Link>
+                <div>
+                    <Link href={`/profile/${post.authorId}`} >
+                        <img src={post.author.profile?.profileImageUrl} alt="User Avatar" />
+                    </Link>
+                </div>
+                <div>
+                    <h2>{post.author?.username}</h2>
+                    <p>{new Date(post.createdAt).toLocaleString()}</p>
+                </div>
             </div>
-            <div>
-                <h2>{post.author?.username}</h2>
-                <p>{new Date(post.createdAt).toLocaleString()}</p>
-            </div>
+            <p>{post.content}</p>
         </div>
-        <p>{post.content}</p>
-    </div>
-  )
+    )
 }
 
 export default Post

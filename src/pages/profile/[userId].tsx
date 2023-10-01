@@ -65,7 +65,7 @@ const UserProfile = ({ profile, posts }: Props) => {
     }, []);
 
     return (
-        <div>
+        <div className="my-20">
             <div>
                 <div>
                     <div>

@@ -26,7 +26,7 @@ const Withdrawal = () => {
     };
 
     return (
-        <div>
+        <div className="my-20">
             <Head>
                 <title>退会</title>
             </Head>

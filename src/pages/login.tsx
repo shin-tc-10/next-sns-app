@@ -31,7 +31,7 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="my-20">
       <Head>
         <title>ログイン</title>
       </Head>

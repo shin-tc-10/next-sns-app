@@ -36,8 +36,8 @@ const TimeLine = () => {
   }, []);
 
   return (
-    <div className="h-screen flex flex-col justify-between">
-      <main className="m-auto overflow-auto">
+    <div className="h-screen flex flex-col justify-between overflow-auto">
+      <main className="m-auto">
         <div className="my-20">
           {latestPosts.map((post: PostType) => (
             <Post key={post.id} post={post} />
@@ -48,7 +48,7 @@ const TimeLine = () => {
             <div className="fixed bottom-0 left-0 w-full bg-white p-4 items-center flex justify-between">
               <textarea className="shadow-xl block block w-full p-2" placeholder="何を呟く？" onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
                 setPostText(e.target.value)} value={postText} />
-              <button type="submit" className="ml-2 px-4 py-2 bg-blue-500 text-white rounded-md hover-:bg-blue-700 focus:outline-none w-24">投稿</button></div>
+              <button type="submit" className="ml-2 px-4 py-2 bg-slate-950 text-white rounded-md hover-:bg-blue-700 focus:outline-none w-24">投稿</button></div>
           </form>
         </div>
       </main>
