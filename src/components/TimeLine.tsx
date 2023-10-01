@@ -36,21 +36,19 @@ const TimeLine = () => {
   }, []);
 
   return (
-    <div>
-      <main className="w-48 m-auto">
-        <div className=" overflow-auto my-20">
+    <div className="h-screen flex flex-col justify-between">
+      <main className="w-48 m-auto overflow-auto">
+        <div className="my-20">
           {latestPosts.map((post: PostType) => (
             <Post key={post.id} post={post} />
           ))}
         </div>
-        <div className="">
+        <div className="fixed bottom-0 left-0 w-full bg-white p-4">
           <form onSubmit={handleSubmit}>
             <div>
-              <textarea className="shadow-xl" placeholder="何を呟く？" onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
-                setPostText(e.target.value)} value={postText} style={{ width: '600px', margin: '70px auto 10px' }} />
-              <div className="d-grid gap-2" style={{ width: '600px', margin: '0 auto 10px' }}>
-                <button type="submit" >投稿する</button></div>
-            </div>
+              <textarea className="shadow-xl block w-full p-2" placeholder="何を呟く？" onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
+                setPostText(e.target.value)} value={postText} />
+              <button type="submit" className="mt-2 px-4 py-2 bg-blue-500 text-white rounded-full hover-:bg-blue-700 focus:outline-none">投稿する</button></div>
           </form>
         </div>
       </main>
