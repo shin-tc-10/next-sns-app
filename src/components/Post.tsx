@@ -18,7 +18,7 @@ const Post = (props: Props) => {
                     </Link>
                 </div>
                 <div className="p-1">
-                    <p>投稿者ID：{post.author?.username}</p>
+                    <p>投稿者名：{post.author?.username}</p>
                     <p>投稿日時：{new Date(post.createdAt).toLocaleString()}</p>
                 </div>
             </div>
