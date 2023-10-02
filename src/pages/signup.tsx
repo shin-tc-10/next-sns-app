@@ -27,20 +27,20 @@ const Signup = () => {
     };
 
     return (
-        <div className="my-20">
+        <div className="h-screen flex items-center justify-center">
             <Head>
                 <title>新規作成</title>
             </Head>
-            <div>
-                <h2>アカウントを作成</h2>
-            </div>
-            <div>
+            <div className="my-20 w-96 shadow-2xl p-8 rounded">
+                <div>
+                    <h2>アカウントを作成</h2>
+                </div>
                 <div>
                     <form onSubmit={handleSubmit}>
                         <div>
                             <label>お名前</label>
                             <input id="name" name="name" type="text" autoComplete="name" required className="" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)} />
-                        </div>
+                        </div >
                         <div>
                             <label>メールアドレス</label>
                             <input id="email" name="email" type="text" autoComplete="email" required className="" onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)} />
@@ -52,10 +52,10 @@ const Signup = () => {
                         <div>
                             <button type="submit">新規登録</button>
                         </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+                    </form >
+                </div >
+            </div >
+        </div >
 
     )
 }
