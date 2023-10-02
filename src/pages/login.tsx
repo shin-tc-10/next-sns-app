@@ -35,21 +35,21 @@ const Login = () => {
       <Head>
         <title>ログイン</title>
       </Head>
-      <div className="my-20 w-96 shadow-2xl p-8 rounded">
-        <div >
-          <h2>アカウントにログイン</h2>
+      <div className="my-20 w-96 shadow-2xl p-8 rounded bg-slate-100">
+        <div className="mb-8">
+          <h1 className="text-xl text-center font-normal">アカウントにログイン</h1>
         </div>
         <div>
           <form onSubmit={handleSubmit}>
-            <div>
+            <div className="mb-6 flex flex-col">
               <label>メールアドレス</label>
-              <input id="email" name="email" type="email" autoComplete="email" required onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)} />
+              <input id="email" name="email" type="email" autoComplete="email" className="border border-gray-200 p-2 rounded-m" required onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)} />
             </div>
-            <div>
+            <div className="mb-6 flex flex-col">
               <label>パスワード</label>
-              <input id="password" name="password" type="password" autoComplete="current-password" required onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)} />
+              <input id="password" name="password" type="password" autoComplete="current-password" className="border border-gray-200 p-2 rounded-m" required onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)} />
             </div>
-            <div>
+            <div className='text-center'>
               <button type="submit" className="ml-2 px-4 py-2 bg-slate-950 text-white rounded-md hover-:bg-blue-700 focus:outline-none w-24">ログイン</button>
             </div>
           </form>

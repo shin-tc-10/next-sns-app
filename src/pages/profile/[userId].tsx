@@ -65,34 +65,36 @@ const UserProfile = ({ profile, posts }: Props) => {
     }, []);
 
     return (
-        <div className="my-20">
-            <div>
-                <div>
-                    <div>
-                        <img src={profile.profileImageUrl} />
-                        <div>
+        <div className="h-screen flex flex-col justify-between">
+            <div className="m-auto">
+                <div className="my-10 shadow-md w-96 bg-white">
+                    <div className="my-20 p-2">
+                        <div className="flex justify-center h-36 my-5">
+                            <img src={profile.profileImageUrl} className="rounded-full" alt="プロフィール画像" />
+                        </div>
+                        <div className='text-center'>
                             <h2>{profile.user.username}</h2>
-                            <p>{profile.bio}</p>
+                            <p className=' my-8'>{profile.bio}</p>
                         </div>
                     </div>
                 </div>
-                {latestPosts.map((post: PostType) => (
-                    <div key={post.id}>
-                        <div>
-                            <div>
-                                <img src={profile.profileImageUrl} />
 
-                                <button onClick={() => onDelete(post.id)}>削除</button>
-                                <div>
-                                    <h2>
-                                        {post.author.username}
-                                    </h2>
-                                    <p>
-                                        {new Date(post.createdAt).toLocaleString()}
-                                    </p>
-                                </div>
-                                <p>{post.content}</p>
+                {latestPosts.map((post: PostType) => (
+                    <div key={post.id} className="my-10 shadow-md w-96 bg-white">
+                        <div className="flex p-2">
+                            <div className="flex p-1">
+                                <img src={profile.profileImageUrl} className="rounded-full" />
                             </div>
+                            <div className="p-1">
+                                <p>投稿者ID：{post.author.username}</p>
+                                <p>投稿日時：{new Date(post.createdAt).toLocaleString()}</p>
+                            </div>
+                            <div className="p-1">
+                                <button onClick={() => onDelete(post.id)} className="py-1 bg-slate-400 text-white rounded-md hover-:bg-blue-700 focus:outline-none text-sm w-12">削除</button>
+                            </div>
+                        </div>
+                        <div className="p-5">
+                            <p>{post.content}</p>
                         </div>
                     </div>
                 ))}
